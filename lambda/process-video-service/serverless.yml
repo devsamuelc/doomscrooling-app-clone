@@ -1,0 +1,31 @@
+service: video-processor-lambda
+
+frameworkVersion: '3'
+
+plugins:
+  - serverless-dotenv-plugin
+
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-north-1
+  environment:
+    DATABASE_URL: ${env:DATABASE_URL}
+    WEBSOCKET_API_ENDPOINT: ${env:WEBSOCKET_API_ENDPOINT}
+
+functions:
+  videoProcessor:
+    handler: src/index.ts
+    events:
+      - sqs:
+          arn:
+            Fn::GetAtt: [VideoEventsQueue, Arn]
+
+resources:
+  Resources:
+    VideoEventsQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: video-events-queue
+

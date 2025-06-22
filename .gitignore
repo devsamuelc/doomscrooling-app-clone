@@ -1,0 +1,51 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+dist/
+.build/
+.serverless/
+.cache/
+coverage/
+
+# Prisma
+prisma/dev.db
+prisma/*.sqlite
+.prisma/
+.env
+
+# Lambda-specific
+*.zip
+
+# Ignore local envs
+.env
+.env.*.local
+
+# Editor folders
+.history/
+.vscode/
+.idea/
+
+# OS/system files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Git
+*.swp
+*.swo
+
+# Ignore node_modules in nested packages
+backend/node_modules/
+lambda/**/node_modules/
+lambda/**/.serverless/
+
+aws/

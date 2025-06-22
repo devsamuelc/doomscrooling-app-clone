@@ -1,0 +1,45 @@
+service: websocket-service
+
+frameworkVersion: '3'
+
+plugins:
+  - serverless-dotenv-plugin
+
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-north-1
+  environment:
+    DATABASE_URL: ${env:DATABASE_URL}
+    WEBSOCKET_API_ENDPOINT:
+      Fn::Sub: https://${WebsocketsApi}.execute-api.${AWS::Region}.amazonaws.com/dev
+
+functions:
+  connectHandler:
+    handler: src/handlers/connect.handler
+    events:
+      - websocket:
+          route: $connect
+
+  disconnectHandler:
+    handler: src/handlers/disconnect.handler
+    events:
+      - websocket:
+          route: $disconnect
+
+  defaultHandler:
+    handler: src/handlers/default.handler
+    events:
+      - websocket:
+          route: $default
+
+resources:
+  Resources:
+    WebsocketsApi:
+      Type: AWS::ApiGatewayV2::Api
+      Properties:
+        Name: websocket-api
+        ProtocolType: WEBSOCKET
+        RouteSelectionExpression: $request.body.action
+

@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String          @id @default(uuid())
+  email        String?         @unique
+  password     String
+  name         String?
+  refreshToken String?
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  deletedAt    DateTime?
+  permission   UserPermissions @default(USER)
+  comments     Comment[]
+  commentLikes CommentLike[]
+  videos       Video[]
+  videoLikes   VideoLike[]
+}
+
+model Video {
+  id          String      @id @default(uuid())
+  title       String
+  description String?
+  url         String?
+  status      VideoStatus @default(PENDING)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  deletedAt   DateTime?
+  processedAt DateTime?
+  userId      String
+  comments    Comment[]
+  user        User        @relation(fields: [userId], references: [id])
+  likes       VideoLike[]
+}
+
+model Comment {
+  id        String        @id @default(uuid())
+  content   String
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  deletedAt DateTime?
+  userId    String
+  videoId   String
+  user      User          @relation(fields: [userId], references: [id])
+  video     Video         @relation(fields: [videoId], references: [id])
+  likes     CommentLike[]
+}
+
+model VideoLike {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  userId    String
+  videoId   String
+  user      User      @relation(fields: [userId], references: [id])
+  video     Video     @relation(fields: [videoId], references: [id])
+
+  @@unique([userId, videoId])
+}
+
+model CommentLike {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  userId    String
+  commentId String
+  videoId   String
+  comment   Comment   @relation(fields: [commentId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
+
+  @@unique([userId, commentId])
+}
+
+model WebSocketConnection {
+  id           String   @id @default(cuid())
+  connectionId String   @unique
+  connectedAt  DateTime @default(now())
+  disconnected Boolean  @default(false)
+
+  @@index([disconnected])
+}
+
+enum VideoStatus {
+  PENDING
+  PROCESSING
+  AVAILABLE
+  FAILED
+}
+
+enum UserPermissions {
+  USER
+  CREATOR
+  ADMIN
+}
