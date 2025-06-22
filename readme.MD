@@ -6,14 +6,6 @@ Este projeto é um clone funcional de um app estilo TikTok, focado em experiênc
 
 O sistema é dividido em três aplicações principais:
 
-/backend
-/lambda
-  └── process-video-service
-  └── websocket-service
-/frontend (em breve)
-
-
----
 
 ### 🧩 Backend (NestJS)
 
