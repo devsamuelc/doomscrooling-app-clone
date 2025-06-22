@@ -17,22 +17,22 @@ Este repositório contém o backend da aplicação, desenvolvido em **NestJS** c
 
 ## Estrutura geral dos serviços
 
-- **Autenticação**
+- **Autenticação**  
   Endpoints para login, registro, refresh token e logout.
 
-- **Usuários**
+- **Usuários**  
   CRUD de usuários, gerenciamento de permissões e perfil.
 
-- **Vídeos**
+- **Vídeos**  
   Upload, atualização, listagem e controle de status (PENDENTE, PROCESSANDO, DISPONÍVEL).
 
-- **Comentários**
+- **Comentários**  
   CRUD de comentários em vídeos, com suporte a likes.
 
-- **Likes**
+- **Likes**  
   Curtição para vídeos e comentários.
 
-- **WebSocket**
+- **WebSocket**  
   Notificações em tempo real para atualizações de vídeos via WebSocket.
 
 ---
@@ -113,3 +113,5 @@ Samuel Lima da Cruz
 ---
 
 Obrigado por contribuir! 🚀
+
+````
