@@ -87,16 +87,6 @@ Lá você pode testar todos os endpoints, ver os modelos e parâmetros aceitos.
 
 ---
 
-## Testes
-
-* Para rodar testes unitários e de integração, use:
-
-```bash
-npm run test
-```
-
----
-
 ## Deploy
 
 * O backend é empacotado e deployado usando AWS Lambda + Serverless Framework (em outro repositório/pasta).
