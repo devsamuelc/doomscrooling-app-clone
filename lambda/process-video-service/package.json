@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --platform=node --target=node18 --outfile=dist/index.js --external:@prisma/client --external:prisma",
+    "build": "npx rimraf dist && esbuild src/index.ts --bundle --platform=node --target=node18 --outfile=dist/index.js --external:@prisma/client --external:@prisma/engines",
     "zip": "zip -r video-processor-lambda-function.zip dist",
     "generate": "prisma generate --schema=prisma/schema.prisma"
   },
