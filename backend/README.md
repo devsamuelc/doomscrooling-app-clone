@@ -45,7 +45,7 @@ Este repositório contém o backend da aplicação, desenvolvido em **NestJS** c
 git clone <repo-url>
 cd backend
 npm install
-```
+````
 
 2. Configure as variáveis de ambiente (exemplo `.env`):
 
