@@ -112,5 +112,3 @@ Samuel Lima da Cruz
 ---
 
 Obrigado por contribuir! 🚀
-
-````
