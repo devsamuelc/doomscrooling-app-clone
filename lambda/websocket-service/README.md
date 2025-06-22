@@ -1,6 +1,3 @@
-Claro! Aqui está um exemplo de README.md simples e direto para o seu **websocket-service**:
-
-````markdown
 # WebSocket Service
 
 Serviço responsável pela gestão de conexões WebSocket via AWS API Gateway e Lambda, utilizado para comunicação em tempo real com os clientes.
@@ -55,5 +52,3 @@ sls deploy
 
 Samuel Lima da Cruz
 [dev.samuellc@outlook.com](mailto:dev.samuellc@outlook.com)
-
-```

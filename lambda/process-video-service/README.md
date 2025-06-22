@@ -1,4 +1,3 @@
-````markdown
 # Process Video Service
 
 Este serviço é responsável pelo processamento dos vídeos na aplicação. Implementado como uma função AWS Lambda, ele consome eventos da fila SQS (`video-events-queue`), atualiza o status dos vídeos no banco e notifica clientes conectados via WebSocket.
@@ -90,5 +89,3 @@ Samuel Lima da Cruz
 ---
 
 Made with ❤️ by Samuel Lima da Cruz
-
-```
