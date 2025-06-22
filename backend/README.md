@@ -107,7 +107,8 @@ npm run test
 
 ## Contato
 
-Em caso de dúvidas ou contribuições, abra uma issue ou envie um PR.
+Samuel Lima da Cruz
+[dev.samuellc@outlook.com](mailto:dev.samuellc@outlook.com)
 
 ---
 
