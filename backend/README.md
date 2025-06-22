@@ -1,4 +1,3 @@
-````markdown
 # Backend - API do Projeto
 
 Este repositório contém o backend da aplicação, desenvolvido em **NestJS** com **TypeScript** e **Prisma** como ORM para PostgreSQL.
