@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 
 import { VideoLikesEndpointService } from './video-likes-endpoint.service';
 import { VideoLikesController } from './video-likes.controller';
-import { VideoLikesService } from './video-likes.service';
 import { PrismaService } from '@/prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
+import { VideoLikesService } from './video-likes.service';
 
 @Module({
   providers: [
