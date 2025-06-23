@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="min-h-screen bg-gray-100 text-gray-900">
+    <NotificationToast :message="notificationMessage" />
     <header
       class="fixed top-0 left-0 right-0 z-20 bg-white shadow flex justify-between items-center px-6 py-4"
       style="height: 80px;"
@@ -60,13 +61,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import api from './services/api';
 import { useAuthStore } from './store/useAuthStore';
 import VideoCard from './components/VideoCard.vue';
 import LoginModal from './components/LoginModal.vue';
 import UploadModal from './components/UploadModal.vue';
 import { useI18n } from 'vue-i18n';
+import { useWebSocket } from './composables/useWebSocket';
+import NotificationToast from './components/NotificationToast.vue';
 
 const authStore = useAuthStore();
 
@@ -74,6 +77,19 @@ const { locale } = useI18n();
 
 locale.value = 'en';
 
+const wsUrl = import.meta.env.VITE_WEBSOCKET_API_ENDPOINT;
+const { messages } = useWebSocket(wsUrl);
+
+const notificationMessage = ref<string | null>(null);
+
+watch(messages, (msgs) => {
+  if (msgs.length === 0) return;
+  const lastMsg = msgs[msgs.length - 1];
+  if (lastMsg.type === 'VIDEO_AVAILABLE') {
+    notificationMessage.value = `Vídeo disponível: ${lastMsg.title}`;
+    // Atualize a lista de vídeos aqui se quiser
+  }
+});
 interface Video {
   id: string;
   title: string;

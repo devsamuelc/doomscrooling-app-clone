@@ -3,8 +3,17 @@ service: video-processor-lambda
 frameworkVersion: '3'
 
 plugins:
+  - serverless-esbuild
   - serverless-dotenv-plugin
 
+custom:
+  esbuild:
+    bundle: true
+    minify: true
+    sourcemap: false
+    target: node18
+    platform: node
+    concurrency: 10
 
 provider:
   name: aws
@@ -18,14 +27,12 @@ functions:
   videoProcessor:
     handler: src/index.ts
     events:
-      - sqs:
-          arn:
-            Fn::GetAtt: [VideoEventsQueue, Arn]
+      - sqs: ${env:VIDEO_EVENTS_QUEUE_ARN}
 
-resources:
-  Resources:
-    VideoEventsQueue:
-      Type: AWS::SQS::Queue
-      Properties:
-        QueueName: video-events-queue
-
+package:
+  exclude:
+    - tests/**
+    - docs/**
+    - .gitignore
+    - .git/**
+    - README.md

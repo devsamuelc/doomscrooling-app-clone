@@ -16,9 +16,10 @@
     "@types/aws-lambda": "^8.10.122",
     "@types/node": "^24.0.3",
     "esbuild": "^0.20.0",
+    "prisma": "^6.10.1",
     "serverless": "^3.38.0",
     "serverless-dotenv-plugin": "^6.0.0",
-    "prisma": "^6.10.1",
+    "serverless-esbuild": "^1.55.1",
     "typescript": "^5.8.3"
   },
   "keywords": [],

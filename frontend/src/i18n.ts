@@ -4,6 +4,7 @@ const messages = {
   pt: {
     loading: "Carregando",
     logout: "Logout",
+    login: "Login",
     upload: "Subir Vídeo",
     loginModal: {
       title: "Login",
@@ -41,7 +42,8 @@ const messages = {
   },
   en: {
     loading: "Loading",
-    logout: "Logout",
+    logout: "Log out",
+    login: "Log in",
     upload: "Upload Video",
     loginModal: {
       title: "Login",
