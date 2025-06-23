@@ -20,7 +20,7 @@ O sistema é dividido em três aplicações principais:
 
 ---
 
-### ⚙️ Funções Lambda
+### ⚙️ Funções Lambda [em desenvolvimento]
 
 - **process-video-service**
   - Processa vídeos recebidos e marca como disponíveis
@@ -49,15 +49,6 @@ O sistema é dividido em três aplicações principais:
 - NestJS, Prisma, PostgreSQL
 - Serverless Framework
 - AWS Lambda, SQS, API Gateway WebSocket
-- Vue.js (em breve)
+- Vue.js
 
 ---
-
-## 🚀 Rodando localmente
-
-```bash
-cd backend
-cp .env.example .env
-npm install
-npm run start:dev
-```
