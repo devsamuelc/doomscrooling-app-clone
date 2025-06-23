@@ -1,4 +1,3 @@
-````markdown
 # Doomscrolling of Doom - Frontend
 
 Este projeto é o frontend da aplicação Doomscrolling of Doom, uma plataforma simples de streaming de vídeos com funcionalidades de upload, likes, comentários e autenticação.
@@ -87,5 +86,3 @@ GitHub: [https://github.com/devsamuelc](https://github.com/devsamuelc)
 ## Licença
 
 MIT © 2025 Samuel Lima da Cruz
-
-```
